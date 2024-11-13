@@ -1,23 +1,21 @@
 import React from 'react';
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import TodoList from './TodoList';
+import AddTodoForm from './AddTodoForm';
 import './App.css'
 
-const todoList = [
-  { id: 1, title: "Complete homework" },
-  { id: 2, title: "Finish project" },
-  { id: 3, title: "Go grocery shopping" },
-];
+import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+
 
 function App() {
   return (
     <div>
-      <h1>Todo List</h1>
-      <ul>
-        {todoList.map(todo => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
+      <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      <h1>Todo List</h1> 
+      <TodoList />
+      <AddTodoForm />
     </div>
   );
 }
