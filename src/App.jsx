@@ -4,7 +4,7 @@ import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import './App.css'
 
-// import reactLogo from './assets/react.svg'
+
 // import todoListImage from "./assets/to-do-list.png"
 import todoListImage1 from "./assets/todo-list1.png"
 
