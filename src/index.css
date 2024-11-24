@@ -46,6 +46,13 @@ ul {
   margin-top: 0;
 }
 
+label {
+  font-weight: bold;
+  color: rgba(68, 68, 68, 0.87);
+  font-size: 16px;
+  margin: 8px;
+}
+
 button {
   color: white;
   border-radius: 8px;
@@ -57,6 +64,7 @@ button {
   background-color: cornflowerblue;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 10px;
 }
 button:hover {
   border-color: #646cff;
@@ -64,5 +72,5 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto rgb(112, 87, 255);
+  outline: 4px auto rgb(#646cff);
 }
