@@ -9,24 +9,35 @@ import './App.css'
 import todoListImage1 from "./assets/todo-list1.png"
 
 
+
 function App() {
 
-//creates a new state variable newTodo, set as an empty string and w/ update to function setNewTodo that will update newTodo
-  const [newTodo, setNewTodo] = useState("");
+  //creates a state var todoList to hold todo items and uses the function setTodoList to update todoList and sets todoList to an empty array
+  const [todoList, setTodoList] = useState([]);
+
+  //function to add a new todo
+  function addTodo(newTodo) {
+    //calls the setTodoList state setter
+    setTodoList(prevList => [
+      ...prevList,
+      newTodo,
+    ]);
+  }
 
   return (
     <div>
-      {/* <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
+   
        
         <img src={todoListImage1} className="todo-list-image1" alt="Todo List" />
       <h1>Todo List</h1> 
-      <TodoList />
+     
+      {/*passes addTodo as a callback handler prop named onAddTodo. This allows AddTodoForm to call addTodo when a new todo is added*/}
+      <AddTodoForm onAddTodo={addTodo} />
 
-     { /*passes setNewTodo as a callback handler prop named onAddTodo. This allows AddTodoForm to call setNewTodo when a new todo is added*/}
-      <AddTodoForm onAddTodo={setNewTodo} />
-      <p>{newTodo}</p> {/*adds p element to display newTodo var */}
+
+      {/*passes todoList state as a prop named todoList to the TodoList component */}
+      <TodoList todoList={todoList} />
+
     </div>
   );
 }
