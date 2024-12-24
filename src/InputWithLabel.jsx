@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react"; //imported useEffect and useRef from react
 
 //Declare InputWithLabel component with props todoTitle and handleTitleChange; making it reusable
-const InputWithLabel = ({ todoTitle, handleTitleChange, label }) => {
+const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
   //created a useRef with value null
   const inputRef = useRef(null);
   //created a useEffect hook to focus on input element
@@ -12,7 +12,7 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, label }) => {
   return (
     <>
       {/*added label prop to the InputWithLabel component*/}
-      <label htmlFor="todoTitle">{label}</label>
+      <label htmlFor="todoTitle">{children}</label>
       <input
         name="title"
         id="todoTitle"
