@@ -2,7 +2,7 @@ import React from "react";
 import TodoListItem from "./TodoListItem";
 
 //added props parameter to function
-function TodoList({ todoList }) {
+function TodoList({ todoList, onRemoveTodo }) {
   console.log(todoList);
 
   return (
@@ -15,7 +15,10 @@ function TodoList({ todoList }) {
           // I passed key={todo.id} as a prop to TodoListItem
           // Pass todo as a prop
           // I passed todo={todo} as a prop to TodoListItem
-          <TodoListItem key={todo.id} todo={todo} />
+          //passed onRemoveTodo prop as a callback handler named onRemoveTodo to the TodoListItem component
+          //enables TodoListItem component to call onRemoveTodo when the user clicks the remove button
+
+          <TodoListItem key={todo.id} todo={todo} onRemoveTodo={onRemoveTodo} />
         ))}
       </ul>
     </div>
