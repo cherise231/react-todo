@@ -7,7 +7,7 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
   //created a useEffect hook to focus on input element
   useEffect(() => {
     inputRef.current.focus(); // focuses on the input element
-  }, []);
+  });
 
   return (
     <>

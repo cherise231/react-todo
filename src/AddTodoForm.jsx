@@ -47,19 +47,10 @@ const AddTodoForm = ({ onAddTodo }) => {
       <InputWithLabel
         todoTitle={todoTitle} // Pass the current value of todoTitle to the InputWithLabel component
         handleTitleChange={handleTitleChange} // Pass the change handler
-        label="Title" //Passing a label prop to the InputWithLabel component
-        autoFocus={true} //added autoFocus prop to the InputWithLabel component
-      />
-
-      {/* delete later from this line */}
-      {/* <label htmlFor="todoTitle">Title</label>
-      <input
-        name="title"
-        id="todoTitle"
-        type="text"
-        value={todoTitle} // controlled input of component set to todoTitle var
-        onChange={handleTitleChange} // Initializes func handleTitleChange for handling changes
-      /> */}
+        //autoFocus={true} added autoFocus prop to the InputWithLabel component
+      >
+        Title {/* passing Title as a child prop */}
+      </InputWithLabel>
 
       <button type="submit">Add</button>
     </form>
