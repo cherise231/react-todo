@@ -13,6 +13,7 @@ const TodoListItem = ({ todo, onRemoveTodo }) => {
       <button
         type="button"
         //added an onClick prop to the button element and passes function onRemoveTodo from props with the current id as the argument
+        className="remove-button"
         onClick={() => onRemoveTodo(todo.id)}
       >
         Remove
