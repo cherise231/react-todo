@@ -60,7 +60,7 @@ button {
   color: white;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.5em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -76,4 +76,14 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto rgb(#646cff);
+}
+
+.remove-button {
+  color: white;
+  border-radius: 8px;
+  background-color: rgba(107, 107, 107, 0.719);
+  cursor: pointer;
+  margin: 0px 0px 0px 30px;
+  padding: 0.4em .6em;
+
 }

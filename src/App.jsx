@@ -37,6 +37,15 @@ function App() {
     setTodoList((prevList) => [...prevList, newTodo]);
   }
 
+  //new handler function to remove todos by id
+  const removeTodo = (id) => {
+    //calls the setTodoList state setter and passes the new array
+    setTodoList((previousTodoList) =>
+      //creates a new array and removes the item with the given id from todoList
+      previousTodoList.filter((todo) => todo.id !== id)
+    );
+  };
+
   return (
     <>
       <img src={todoListImage1} className="todo-list-image1" alt="Todo List" />
@@ -46,7 +55,8 @@ function App() {
       <AddTodoForm onAddTodo={addTodo} />
 
       {/*passes todoList state as a prop named todoList to the TodoList component */}
-      <TodoList todoList={todoList} />
+      {/* passes removeTodo prop as a callback handler prop called onRemoveTodo to the TodoList component */}
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+// Import InputWithLabel component
+import InputWithLabel from "./InputWithLabel";
 
 //added props as a parameter in the AddTodoForm function
 //took out prop and added onAddTodo as a destructured parameter in the AddTodoForm function
@@ -40,17 +42,16 @@ const AddTodoForm = ({ onAddTodo }) => {
   }
 
   return (
+    //added onSubmit prop to the form element
     <form onSubmit={handleAddTodo}>
-      {" "}
-      {/*added onSubmit prop to the form element*/}
-      <label htmlFor="todoTitle">Title</label>
-      <input
-        name="title"
-        id="todoTitle"
-        type="text"
-        value={todoTitle} // controlled input of component set to todoTitle var
-        onChange={handleTitleChange} // Initializes func handleTitleChange for handling changes
-      />
+      <InputWithLabel
+        todoTitle={todoTitle} // Pass the current value of todoTitle to the InputWithLabel component
+        handleTitleChange={handleTitleChange} // Pass the change handler
+        //autoFocus={true} added autoFocus prop to the InputWithLabel component
+      >
+        Title {/* passing Title as a child prop */}
+      </InputWithLabel>
+
       <button type="submit">Add</button>
     </form>
   );
