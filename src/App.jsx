@@ -25,6 +25,7 @@ function App() {
       setTimeout(() => {
         const savedTodoList =
           JSON.parse(localStorage.getItem("savedTodoList")) || [];
+        //calls resolve with an object containing the savedTodoList as the value for the todoList property
         resolve({ data: { todoList: savedTodoList } });
       }, 2000); //Delay 2 seconds
     }).then((result) => {
