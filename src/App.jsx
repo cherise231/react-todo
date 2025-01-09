@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import "./App.css";
@@ -40,14 +40,19 @@ function App() {
       // console.log(data);
 
       //maps over the records array and extracts the id and title fields from each record; the extracted data is stored in the todos variable;
-      const todos = data.records.map((todo) => {
-        const newTodo = {
-          id: todo.id,
-          title: todo.fields.title,
-        };
-        // Returns the newTodo object from the map function for each record.
-        return newTodo;
-      });
+      const todos = data.records.map((todo) => ({
+        id: todo.id,
+        title: todo.fields.title,
+      }));
+
+      // const todos = data.records.map((todo) => {
+      //   const newTodo = {
+      //     id: todo.id,
+      //     title: todo.fields.title,
+      //   };
+      //   return newTodo;
+      // })
+
       // console.log(todos);
       //updates the todoList state with the fetched data; the todos array is passed to the setTodoList state setter to update the todoList state;
       setTodoList(todos);
@@ -108,28 +113,46 @@ function App() {
   };
 
   return (
-    <>
+    // wrapping jsx with BrowserRouter component
+    <BrowserRouter>
       {/* Adding a ternary operator to render loading message only if isLoading is true, otherwise it renders the TodoList component */}
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <img
-            src={todoListImage1}
-            className="todo-list-image1"
-            alt="Todo List"
-          />
-          <h1>Todo List</h1>
+      <nav>
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+        <Link to="/new" className="nav-link">
+          New
+        </Link>
+      </nav>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <img
+                  src={todoListImage1}
+                  className="todo-list-image1"
+                  alt="Todo List"
+                />
+                <h1>Todo List</h1>
 
-          {/*passes addTodo as a callback handler prop named onAddTodo. This allows AddTodoForm to call addTodo when a new todo is added*/}
-          <AddTodoForm onAddTodo={addTodo} />
+                {/*passes addTodo as a callback handler prop named onAddTodo. This allows AddTodoForm to call addTodo when a new todo is added*/}
+                <AddTodoForm onAddTodo={addTodo} />
 
-          {/*passes todoList state as a prop named todoList to the TodoList component */}
-          {/* passes removeTodo prop as a callback handler prop called onRemoveTodo to the TodoList component */}
-          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-        </>
-      )}
-    </>
+                {/*passes todoList state as a prop named todoList to the TodoList component */}
+                {/* passes removeTodo prop as a callback handler prop called onRemoveTodo to the TodoList component */}
+                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+              </>
+            )
+          }
+        />{" "}
+        {/*closing Route tag*/}
+        <Route path="/new" element={<h1>New Todo List</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -11,6 +11,32 @@
   padding-left: 50px;
 } */
 
+nav {
+  /*background-color: #090b0e;  */
+  padding: 10px; /* Padding around the nav */
+  font-size: 1.1rem; /* Larger font size */
+  margin-bottom: 40px;
+  align-items: center;
+}
+.nav-link {
+  background-color: rgb(247, 247, 247);
+  /* border: 2px solid #909091; */
+  color: rgba(68, 68, 68, 0.87);
+  /* color: #ffffff;  */
+  /* color: #007bff;  */
+  padding: 6px 20px;
+  margin: 0 20px; /* Space between */
+  border-radius: 20px;
+  /* transition: color 0.3s; Smooth color transition */
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  /*font-weight: bold;  */
+  background-color: rgb(72, 118, 204);
+  /* text-decoration: underline; */
+}
+
 .todo-list-image1 {
   width: 300px;
   height: auto;
