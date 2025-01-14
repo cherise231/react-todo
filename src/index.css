@@ -35,8 +35,6 @@ body {
 }
 
 
-
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -69,21 +67,14 @@ button {
   transition: border-color 0.25s;
   margin: 10px;
 }
+
 button:hover {
   border-color: #646cff;
   background-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto rgb(#646cff);
 }
 
-.remove-button {
-  color: white;
-  border-radius: 8px;
-  background-color: rgba(107, 107, 107, 0.719);
-  cursor: pointer;
-  margin: 0px 0px 0px 30px;
-  padding: 0.4em .6em;
-
-}
