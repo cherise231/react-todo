@@ -100,11 +100,60 @@ nav {
 
 /* to do list li's styling*/
 .todo-list-item {
-  padding: 10px;
-  margin: 5px 0 5px -10px;
-  /* width: 264px; */
+  /* padding: 10px; */
+  max-width: 100%;
+  margin: 5px 0 5px 0px;
+  /* width: 364px; */
   /* background-color: #f9f9f9; */
+  /* background-color: purple; */
   /* border: 1px solid #ddd; */
   border-radius: 4px;
-  /* list-style-type: none; */
+  border-radius: 4px;
+  list-style-type: none;
+  display: block;
 }
+
+.todo-item-container {
+  display: flex;
+  flex-direction: row;
+
+  /* justify-content: flex-start; */
+  /* justify-content: space-between; */
+  /* align-items: flex-start; */
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding-right: 1px;
+  padding-left: 10px;
+  /* background-color: pink; */
+  /* vertical-align: middle; */
+  /* margin-left: 20px; */
+}
+
+.todo-item-container p {
+  padding: 0 10px;
+  flex-grow: 1;
+  /* max-width: 500px;  */
+  /* margin: 0; */
+  max-width: 300px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.remove-button {
+  color: white;
+  border-radius: 8px;
+  background-color: rgba(107, 107, 107, 0.719);
+  cursor: pointer;
+  /* margin: 0px 0px 0px 10px; */
+  padding: 0.2em 0.6em;
+  margin-left: 10px;
+}
+
+/* ul { 
+  list-style-type: none; 
+  padding-left: 20px;
+  background-color: pink;
+  width: 800px;
+} */
