@@ -49,7 +49,8 @@ const AddTodoForm = ({ onAddTodo }) => {
         handleTitleChange={handleTitleChange} // Pass the change handler
         //autoFocus={true} added autoFocus prop to the InputWithLabel component
       >
-        Title {/* passing Title as a child prop */}
+        {/* Title */}
+        {/* passing Title as a child prop */}
       </InputWithLabel>
 
       <button type="submit">Add</button>

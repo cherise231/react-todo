@@ -6,8 +6,8 @@ function TodoList({ todoList, onRemoveTodo }) {
   console.log(todoList);
 
   return (
-    <div>
-      <ul>
+    <div className="containerList">
+      <ul className="containerUL">
         {/* changed todoList to reference props  */}
 
         {todoList.map((todo) => (

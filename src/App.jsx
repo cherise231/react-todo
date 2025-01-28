@@ -45,14 +45,6 @@ function App() {
         title: todo.fields.title,
       }));
 
-      // const todos = data.records.map((todo) => {
-      //   const newTodo = {
-      //     id: todo.id,
-      //     title: todo.fields.title,
-      //   };
-      //   return newTodo;
-      // })
-
       // console.log(todos);
       //updates the todoList state with the fetched data; the todos array is passed to the setTodoList state setter to update the todoList state;
       setTodoList(todos);
@@ -70,22 +62,6 @@ function App() {
     fetchData(); //Calls the fetchData function
   }, []); //Empty dependency array to run only once on mount
 
-  // useEffect(() => {
-  //   //new Promise to simulate fetching data from an API
-  //   new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       const savedTodoList =
-  //         JSON.parse(localStorage.getItem("savedTodoList")) || [];
-  //       //calls resolve with an object containing the savedTodoList as the value for the todoList property
-  //       resolve({ data: { todoList: savedTodoList } });
-  //     }, 2000); //Delay 2 seconds
-  //   }).then((result) => {
-  //     //Updates the todoList state with the fetched data
-  //     setTodoList(result.data.todoList);
-  //     //Sets the loading status to false after the data is fetched
-  //     setIsLoading(false);
-  //   });
-  // }, []); //Empty dependency array to run only once on mount
 
   // Defines a useEffect React hook with todoList as a dependency. The useEffect hook performs side effects in function components. It is being used to synchronize the "todoList" state with "localStorage".
 

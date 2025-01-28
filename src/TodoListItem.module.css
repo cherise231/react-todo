@@ -1,0 +1,105 @@
+.ListItem {
+  color: rgb(37, 37, 37);
+  /* padding: 10px; */
+  max-width: 400px;
+  margin: 5px 0 5px 0px;
+  /* width: 364px; */
+  align-items: center;
+  /* background-color: #f9f9f9; */
+  /* background-color: purple; */
+  /* border: 1px solid #ddd; */
+  /* border-radius: 4px; */
+  /* justify-content: flex-start; */
+  list-style-type: none;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todoItemContainer {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 0px;
+  /* max-width: 300px; */
+  /* background-color: pink; */
+}
+
+.customCheckbox {
+  accent-color: rgb(255, 255, 255);
+}
+
+.todoItemContainer p {
+  padding: 0 10px;
+  flex-grow: 1;
+
+  /* margin: 0; */
+  max-width: 260px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  color: rgb(37, 36, 36);
+  font-weight: 500;
+}
+
+.removeButton {
+  color: white;
+  border-radius: 8px;
+  background-color: rgba(107, 107, 107, 0.719);
+  cursor: pointer;
+  /* margin: 0px 0px 0px 10px; */
+  padding: 0.3em 0.6em;
+  /* height: 30px; */
+  margin-left: 10px;
+}
+
+@media (max-width: 500px) {
+  .todoItemContainer {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0px;
+    min-width: 240px;
+    /* max-width: 260px; */
+    /* background-color: pink; */
+  }
+
+  .ListItem {
+    max-width: 300px;
+    align-items: center;
+    
+  }
+
+  /* ul {
+    align-items: center;
+    /* max-width: 300px; */
+  /* padding: 0px; 
+   
+  } */
+
+  .todoItemContainer p {
+    padding: 0 5px;
+    flex-grow: 1;
+
+    /* margin: 0; */
+    max-width: 200px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    color: rgb(37, 36, 36);
+    font-weight: 500;
+    margin: 7px 0px 7px 0px;
+    line-height: 1.1;
+    /* font-size: 14px; */
+  }
+}

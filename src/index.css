@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: system-ui; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -32,25 +35,47 @@ body {
   min-width: 320px;
   min-height: 100vh;
   padding-top: 20px;
+  background-color: rgb(252, 252, 252);
 }
 
-
 h1 {
-  font-size: 3.2em;
+  font-size: 3.1em;
   line-height: 1.1;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
   color: rgb(37, 36, 36);
+
   text-align: left;
-  margin-top: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px;
 }
+
+/* .containerList {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  /* background-color: blue; 
+  align-items: center;
+}*/
+
+/*.containerUL {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+} */
 
 label {
   font-weight: bold;
-  color: rgba(68, 68, 68, 0.87);
+  /* color: rgba(68, 68, 68, 0.87); */
+  color: rgba(232, 235, 255, 0.87);
   font-size: 16px;
+  /* background-color: pink; */
   margin: 8px;
 }
 
@@ -78,3 +103,74 @@ button:focus-visible {
   outline: 4px auto rgb(#646cff);
 }
 
+form {
+  align-items: center;
+  margin: 0 auto;
+
+  /* background-color: pink;  */
+  /* padding: 20px;  */
+}
+
+@media (max-width: 768px) {
+  body {
+    /* background-color: #bcd1ff; */
+    background: linear-gradient(
+      to bottom,
+      rgb(239, 246, 255),
+      rgb(150, 215, 220),
+      rgb(31, 69, 117)
+    );
+  }
+  .todo-list-image1 {
+    width: 270px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.9em;
+    margin-top: 10px;
+
+    color: rgba(44, 43, 65, 0.87);
+    /* color: rgba(68, 68, 68, 0.87); */
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    /* background-color: rgb(213, 232, 255); */
+    background: linear-gradient(
+      to bottom,
+      rgb(246, 247, 255),
+      rgb(144, 181, 230),
+      rgb(73, 68, 145)
+    );
+    padding: 0px;
+  }
+  .todo-list-image1 {
+    width: 240px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-top: 3px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #53f2ca; */
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .containerList {
+    display: flex;
+    flex-direction: column;
+    /* width: 400px; */
+    align-items: center;
+
+    margin: -10px auto 0px auto;
+    /*height: 100vh; */
+  }
+}
