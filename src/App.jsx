@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import TodoList from "./TodoList";
-import AddTodoForm from "./AddTodoForm";
+// import TodoList from "./TodoList";
+// import AddTodoForm from "./AddTodoForm";
+import TodoList from "../src/components/TodoList";
+import AddTodoForm from "../src/components/AddTodoForm";
 import "./App.css";
 
 // import todoListImage from "./assets/to-do-list.png"

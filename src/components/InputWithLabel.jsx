@@ -1,7 +1,14 @@
 import React, { useEffect, useRef } from "react"; //imported useEffect and useRef from react
 
+import PropTypes from "prop-types";
+
 //Declare InputWithLabel component with props todoTitle and handleTitleChange; making it reusable
 const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
+
+  // console.log("type of todoTitle", typeof todoTitle); //string
+  // console.log("type of handleTitleChange", typeof handleTitleChange);  //function
+  // console.log("type of children", typeof children); //undefined
+  
   //created a useRef with value null
   const inputRef = useRef(null);
   //created a useEffect hook to focus on input element
@@ -24,5 +31,12 @@ const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
     </>
   );
 };
+
+InputWithLabel.propTypes = {
+  todoTitle: PropTypes.string,
+  handleTitleChange: PropTypes.func,
+  children: PropTypes.node,
+};
+
 
 export default InputWithLabel;

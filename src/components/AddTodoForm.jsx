@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 // Import InputWithLabel component
-import InputWithLabel from "./InputWithLabel";
-
+// import InputWithLabel from "./InputWithLabel";
+import InputWithLabel from "../components/InputWithLabel";
+import PropTypes from "prop-types";
 //added props as a parameter in the AddTodoForm function
 //took out prop and added onAddTodo as a destructured parameter in the AddTodoForm function
 const AddTodoForm = ({ onAddTodo }) => {
@@ -34,9 +35,6 @@ const AddTodoForm = ({ onAddTodo }) => {
       onAddTodo(newTodo);
     }
 
-    //resets the form and clears input;
-    // event.target.reset();
-
     //clears the input field by resetting the state
     setTodoTitle("");
   }
@@ -56,6 +54,10 @@ const AddTodoForm = ({ onAddTodo }) => {
       <button type="submit">Add</button>
     </form>
   );
+};
+
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func,
 };
 
 export default AddTodoForm;
