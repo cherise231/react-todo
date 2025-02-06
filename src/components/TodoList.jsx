@@ -1,9 +1,15 @@
 import React from "react";
-import TodoListItem from "./TodoListItem";
+
+import TodoListItem from "../components/TodoListItem";
+import PropTypes from "prop-types";
 
 //added props parameter to function
 function TodoList({ todoList, onRemoveTodo }) {
   console.log(todoList);
+  // console.log("type of todoList", typeof todoList);
+  // console.log("type of todoList", Array.isArray(todoList));
+  //todoList is an array of objects
+  // console.log("type of onRemoveTodo", typeof onRemoveTodo);
 
   return (
     <div className="containerList">
@@ -24,5 +30,10 @@ function TodoList({ todoList, onRemoveTodo }) {
     </div>
   );
 }
+
+TodoList.propTypes = {
+  todoList: PropTypes.array,
+  onRemoveTodo: PropTypes.func,
+};
 
 export default TodoList;
