@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-// import TodoList from "./TodoList";
-// import AddTodoForm from "./AddTodoForm";
 import TodoList from "../src/components/TodoList";
 import AddTodoForm from "../src/components/AddTodoForm";
 import "./App.css";
@@ -63,7 +61,6 @@ function App() {
   useEffect(() => {
     fetchData(); //Calls the fetchData function
   }, []); //Empty dependency array to run only once on mount
-
 
   // Defines a useEffect React hook with todoList as a dependency. The useEffect hook performs side effects in function components. It is being used to synchronize the "todoList" state with "localStorage".
 

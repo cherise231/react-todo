@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
+
 // Import InputWithLabel component
-// import InputWithLabel from "./InputWithLabel";
 import InputWithLabel from "../components/InputWithLabel";
 import PropTypes from "prop-types";
+
 //added props as a parameter in the AddTodoForm function
 //took out prop and added onAddTodo as a destructured parameter in the AddTodoForm function
 const AddTodoForm = ({ onAddTodo }) => {
