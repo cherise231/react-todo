@@ -107,6 +107,7 @@ function App() {
   useEffect(() => {
     //checks if the data is not loading
     if (isLoading === false) {
+      
       //will only update localStorage if the data is not loading
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
     }
@@ -132,7 +133,7 @@ function App() {
     //       return 0;
     //     }
 
-    //       return 0;
+    //       return 1;
 
     //   });
     //   return updatedList;
