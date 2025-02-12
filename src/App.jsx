@@ -88,6 +88,8 @@ function App() {
       //   const newTodos = todos.filter((todo) => !existingIds.has(todo.id));
       //   return [...prevList, ...newTodos]; // Combine existing and new todos
       // });
+
+      
       //Sets the loading status to false after the data is fetched;
       setIsLoading(false);
 
@@ -116,28 +118,28 @@ function App() {
   //function to add a new todo
   function addTodo(newTodo) {
     //calls the setTodoList state setter
-    setTodoList((prevList) => [...prevList, newTodo]);
+    // setTodoList((prevList) => [...prevList, newTodo]);
 
-    // if (!newTodo.title) {
-    //   console.error("New todo must have a title");
-    //   return;
-    // }
-    // setTodoList((prevList) => {
-    //   const updatedList = [...prevList, newTodo];
+    if (!newTodo.title) {
+      console.error("New todo must have a title");
+      return;
+    }
+    setTodoList((prevList) => {
+      const updatedList = [...prevList, newTodo];
 
-    //   updatedList.sort((objectA, objectB) => {
-    //     if (objectA.title < objectB.title) {
-    //       return -1;
-    //     }
-    //     if (objectA.title === objectB.title) {
-    //       return 0;
-    //     }
+      updatedList.sort((objectA, objectB) => {
+        if (objectA.title.toLowerCase() < objectB.title.toLowerCase()) {
+          return -1;
+        }
+        if (objectA.title.toLowerCase() === objectB.title.toLowerCase()) {
+          return 0;
+        }
 
-    //       return 1;
+          return 1;
 
-    //   });
-    //   return updatedList;
-    // });
+      });
+      return updatedList;
+    });
   }
 
   //new handler function to remove todos by id
