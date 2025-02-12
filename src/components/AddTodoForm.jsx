@@ -23,8 +23,8 @@ const AddTodoForm = ({ onAddTodo }) => {
     //console.log("todoTitle:", todoTitle); logs value in console
 
     const newTodo = {
-      title: todoTitle,
       id: Date.now(),
+      title: todoTitle,
     };
 
     console.log("newTodo", newTodo);
