@@ -9,11 +9,11 @@ import todoListImage1 from "./assets/todo-list1.png";
 
 function App() {
   //Initializes the todoList state to an empty array
-  // const [todoList, setTodoList] = useState([]);
-  const [todoList, setTodoList] = useState(() => {
-    const savedTodoList = JSON.parse(localStorage.getItem("savedTodoList"));
-    return savedTodoList || []; // Return saved todos or an empty array
-  });
+  const [todoList, setTodoList] = useState([]);
+  // const [todoList, setTodoList] = useState(() => {
+  //   const savedTodoList = JSON.parse(localStorage.getItem("savedTodoList"));
+  //   return savedTodoList || []; // Return saved todos or an empty array
+  // });
   //state to track loading status
   const [isLoading, setIsLoading] = useState(true);
 
@@ -82,12 +82,12 @@ function App() {
 
       // console.log(todos);
       //updates the todoList state with the fetched data; the todos array is passed to the setTodoList state setter to update the todoList state;
-      // setTodoList(todos);
-      setTodoList((prevList) => {
-        const existingIds = new Set(prevList.map((todo) => todo.id));
-        const newTodos = todos.filter((todo) => !existingIds.has(todo.id));
-        return [...prevList, ...newTodos]; // Combine existing and new todos
-      });
+      setTodoList(todos);
+      // setTodoList((prevList) => {
+      //   const existingIds = new Set(prevList.map((todo) => todo.id));
+      //   const newTodos = todos.filter((todo) => !existingIds.has(todo.id));
+      //   return [...prevList, ...newTodos]; // Combine existing and new todos
+      // });
 
       //Sets the loading status to false after the data is fetched;
       setIsLoading(false);
