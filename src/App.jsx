@@ -10,7 +10,10 @@ import todoListImage1 from "./assets/todo-list1.png";
 function App() {
   //Initializes the todoList state to an empty array
   const [todoList, setTodoList] = useState([]);
-
+  // const [todoList, setTodoList] = useState(() => {
+  //   const savedTodoList = JSON.parse(localStorage.getItem("savedTodoList"));
+  //   return savedTodoList || []; // Return saved todos or an empty array
+  // });
   //state to track loading status
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,9 +26,15 @@ function App() {
       },
     };
 
+    // const url = `https://api.airtable.com/v0/${
+    //   import.meta.env.VITE_AIRTABLE_BASE_ID
+    // }/${import.meta.env.VITE_TABLE_NAME}`;
+
     const url = `https://api.airtable.com/v0/${
       import.meta.env.VITE_AIRTABLE_BASE_ID
-    }/${import.meta.env.VITE_TABLE_NAME}`;
+    }/${
+      import.meta.env.VITE_TABLE_NAME
+    }?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`;
 
     try {
       const response = await fetch(url, options);
@@ -39,6 +48,32 @@ function App() {
       const data = await response.json();
       // console.log(data);
 
+      //orders the todos array in ascending order by tittle a-z
+      data.records.sort((objectA, objectB) => {
+        if (objectA.fields.title < objectB.fields.title) {
+          return -1;
+        }
+        if (objectA.fields.title === objectB.fields.title) {
+          return 0;
+        }
+        if (objectA.fields.title > objectB.fields.title) {
+          return 1;
+        }
+      });
+
+      // reverses the order of the todos array from z-a
+      // data.records.sort((objectA, objectB) => {
+      //   if (objectA.fields.title < objectB.fields.title) {
+      //     return 1;
+      //   }
+      //   if (objectA.fields.title === objectB.fields.title) {
+      //     return 0;
+      //   }
+      //   if (objectA.fields.title > objectB.fields.title) {
+      //     return -1;
+      //   }
+      // });
+
       //maps over the records array and extracts the id and title fields from each record; the extracted data is stored in the todos variable;
       const todos = data.records.map((todo) => ({
         id: todo.id,
@@ -48,6 +83,11 @@ function App() {
       // console.log(todos);
       //updates the todoList state with the fetched data; the todos array is passed to the setTodoList state setter to update the todoList state;
       setTodoList(todos);
+      // setTodoList((prevList) => {
+      //   const existingIds = new Set(prevList.map((todo) => todo.id));
+      //   const newTodos = todos.filter((todo) => !existingIds.has(todo.id));
+      //   return [...prevList, ...newTodos]; // Combine existing and new todos
+      // });
       //Sets the loading status to false after the data is fetched;
       setIsLoading(false);
 
@@ -76,6 +116,27 @@ function App() {
   function addTodo(newTodo) {
     //calls the setTodoList state setter
     setTodoList((prevList) => [...prevList, newTodo]);
+
+    // if (!newTodo.title) {
+    //   console.error("New todo must have a title");
+    //   return;
+    // }
+    // setTodoList((prevList) => {
+    //   const updatedList = [...prevList, newTodo];
+
+    //   updatedList.sort((objectA, objectB) => {
+    //     if (objectA.title < objectB.title) {
+    //       return -1;
+    //     }
+    //     if (objectA.title === objectB.title) {
+    //       return 0;
+    //     }
+
+    //       return 0;
+
+    //   });
+    //   return updatedList;
+    // });
   }
 
   //new handler function to remove todos by id
