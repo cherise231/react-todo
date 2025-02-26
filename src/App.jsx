@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import TodoList from "../src/components/TodoList";
 import AddTodoForm from "../src/components/AddTodoForm";
 import "./App.css";
+import Confetti from "react-confetti";
+// import { useRef } from "react";
 
 // import todoListImage from "./assets/to-do-list.png"
 import todoListImage1 from "./assets/todo-list1.png";
@@ -16,7 +18,24 @@ function App() {
   // });
   //state to track loading status
   const [isLoading, setIsLoading] = useState(true);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [confettiPosition, setConfettiPosition] = useState({ x: 0, y: 0 });
 
+  //function to sort todos by title
+  const sortTodosByTitle = (todos) => {
+    return todos.sort((objectA, objectB) => {
+      if (objectA.title.toLowerCase() < objectB.title.toLowerCase()) {
+        return -1;
+      }
+      if (objectA.title.toLowerCase() === objectB.title.toLowerCase()) {
+        return 0;
+      }
+
+      return 1;
+    });
+  };
+
+  //function to fetch data from backend
   const fetchData = async () => {
     //declaring options object with method and headers properties; Authorization header is set with the value of the Airtable API token; the options object is passed to the fetch function
     const options = {
@@ -75,10 +94,12 @@ function App() {
       // });
 
       //maps over the records array and extracts the id and title fields from each record; the extracted data is stored in the todos variable;
-      const todos = data.records.map((todo) => ({
-        id: todo.id,
-        title: todo.fields.title,
-      }));
+      const todos = sortTodosByTitle(
+        data.records.map((todo) => ({
+          id: todo.id,
+          title: todo.fields.title,
+        }))
+      );
 
       // console.log(todos);
       //updates the todoList state with the fetched data; the todos array is passed to the setTodoList state setter to update the todoList state;
@@ -119,33 +140,55 @@ function App() {
     // setTodoList((prevList) => [...prevList, newTodo]);
 
     if (!newTodo.title) {
+      alert("Please enter text.");
       console.error("New todo must have a title");
       return;
     }
+
     setTodoList((prevList) => {
       const updatedList = [...prevList, newTodo];
-
-      updatedList.sort((objectA, objectB) => {
-        if (objectA.title.toLowerCase() < objectB.title.toLowerCase()) {
-          return -1;
-        }
-        if (objectA.title.toLowerCase() === objectB.title.toLowerCase()) {
-          return 0;
-        }
-
-        return 1;
-      });
-      return updatedList;
+      return sortTodosByTitle(updatedList);
     });
   }
 
+  // setTodoList((prevList) => {
+  //   const updatedList = [...prevList, newTodo];
+
+  //   updatedList.sort((objectA, objectB) => {
+  //     if (objectA.title.toLowerCase() < objectB.title.toLowerCase()) {
+  //       return -1;
+  //     }
+  //     if (objectA.title.toLowerCase() === objectB.title.toLowerCase()) {
+  //       return 0;
+  //     }
+
+  //     return 1;
+  //   });
+  //   return updatedList;
+  // });
+
   //new handler function to remove todos by id
-  const removeTodo = (id) => {
+  const removeTodo = (id, buttonRef) => {
+    if (buttonRef && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setConfettiPosition({
+        x: rect.x + rect.width / 2,
+        y: rect.y - 60,
+      });
+      setShowConfetti(true);
+    }
+
     //calls the setTodoList state setter and passes the new array
     setTodoList((previousTodoList) =>
       //creates a new array and removes the item with the given id from todoList
       previousTodoList.filter((todo) => todo.id !== id)
     );
+
+    // Show confetti when a todo is deleted
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false); // Hide confetti after a short duration
+    }, 3500); // Adjust duration
   };
 
   return (
@@ -168,6 +211,18 @@ function App() {
               <p>Loading...</p>
             ) : (
               <>
+                {showConfetti && (
+                  <Confetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    x={confettiPosition.x}
+                    y={confettiPosition.y}
+                    numberOfPieces={200} // Increase the number of pieces
+                    gravity={0.2} // make confetti fall faster
+                    // wind={0.1} // Add some horizontal movement
+                    recycle={false}
+                  />
+                )}
                 <img
                   src={todoListImage1}
                   className="todo-list-image1"
